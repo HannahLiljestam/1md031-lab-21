@@ -1,1 +1,123 @@
-Hello world
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Hannah's Burgers</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <header>
+            <h1>Welcome to Hannah's Burgers!</h1>
+        </header>
+        <main>
+            <section>
+                <h2>BURGER SELECTION</h2>
+                <h4>Select one of our yummy burgers below</h4>
+
+                <div style ="float:left;">
+                    <h3>Hannah's extremely tasty burger</h3>
+                    <img src="https://cached-images.bonnier.news/bnl01/standard-article/466a6b03-1dc8-4c53-9b38-062066eb7843/ed7990bd-913c-4eca-a07c-db9d76aef545/16x9/0/original.jpg" alt="Span" style="width: 400px; height: 300px; ";>
+                    <ul>
+                        <li>An extremely tasty burger.</li>
+                        <li>Contains gluten, lactose.</li>
+                    </ul>
+                </div>
+
+                <div style ="float:left;">
+                    <h3>Hannah's fantastically yummy burger</h3>
+                    <img src="https://www.edibleorlando.com/wp-content/uploads/Screenshot-2019-05-23-17.21.08.png" alt="Span" style="width: 400px; height: 300px;";>
+                    <div style="clear: both;"></div>
+                    <ul>
+                        <li>So yummy.</li>
+                        <li>Contains gluten, lactose.</li>
+                        <li>Available with chicken and plant beef.</li>
+                    </ul>
+                </div>
+
+                <div style ="float:left;">
+                    <h3>Hannah's tremendously delicious burger</h3>
+                    <img src="https://www.burgerdudes.se/wp-content/uploads/2019/11/groundburger_timeout-620x380.jpg" alt="Span" style="width: 400px; height: 300px;";>
+                    <div style="clear: left;"></div>
+                    <ul>
+                        <li>Very good.</li>
+                        <li>Contains gluten, lactose.</li>
+                        <li>Available with plant beef.</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <section style="clear:left">
+                 <h2>CUSTOMER INFORMATION</h2>
+                <h4>Fill in the following information to finish your order.</h4>
+            </section>
+
+            <section id="contact">
+                <form>
+                    <p>
+                        <label for="name">Full Name</label><br>
+                        <input type="text" id="name" name="fn" required="required" placeholder="Full name">
+                    </p>
+
+                    <p>
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                    </p>
+
+                    <p>
+                        <label for="Street name">Street Name</label><br>
+                        <input type="text" id="Street name" name="ln" placeholder="Street name">
+                    </p>
+
+                    <p>
+                        <label for="number">House Number</label><br>
+                        <input type="number" id="number" name="number" required="required" placeholder="House number">
+                    </p>
+
+
+                <p>
+                    <label for="payment">Choose a method of payment</label>
+                    <select id="payment" name="rcp">
+                        <option selected>Credit card</option>
+                        <option>Klarna</option>
+                        <option>Swish</option>
+                    </select>
+                </p>
+
+                <p>Provide your gender:</p>
+                <div>
+                    <input type="radio" id="Female" name="gender" value="Female"
+                           checked>
+                    <label for="Female">Female</label>
+
+
+
+                    <input type="radio" id="Male" name="gender" value="Male">
+                    <label for="Male">Male</label>
+
+
+
+                    <input type="radio" id="Non-binary" name="drone" value="Non-binary">
+                    <label for="Non-binary">Non-binary</label>
+
+
+
+                    <input type="radio" id="Other" name="drone" value="Other">
+                    <label for="Other">Other</label>
+                </div>
+
+
+                </form>
+            </section>
+
+            <button type="submit">
+                <img src="./static/1md034/img/html/image_button.png">
+                Place my order
+            </button>
+
+        </main>
+        <hr>
+        <footer>
+            <h6>&copy; Hannah's Burgers</h6>
+        </footer>
+    </body>
+</html>
