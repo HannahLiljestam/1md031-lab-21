@@ -1,1 +1,105 @@
-/*empty*/
+/* My styling document */
+
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
+body {     /* Font, capitalize, line height, color of text, font size and margins to the sides of the whole body */
+    font-family: "Times New Roman", serif;
+    text-transform: capitalize;
+    line-height: normal;
+    color: #2F4F4F;
+    font-size: 16pt;
+    margin: 50px; /*50px 120px 120px; */
+
+}
+
+.ingredients {
+    color: #ff5500;
+}
+
+.allergies {           /* Writes allergies in bold font */
+    font-weight: bold;
+}
+
+#burgerinfo {  /* makes the burger part of the site have a black background and white text */
+    background-color: #444;
+    color: white;
+    /* padding: 1px 10px 4px;   */
+    border: 20px solid #994d00;
+}
+
+button {  /* creates some space around the submit button */
+    margin: 20px 20px 20px 0px;
+}
+
+button:hover {  /* makes the submit button darker when hovered over, and also the cursor becomes a pointer */
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+ .wrapper {  /* wraps around the divs */
+      display: grid;
+      grid-gap: 2%;
+      grid-template-columns: 30% 30% 30%;
+      background-color: #444;
+      color: #444;
+      
+  }
+ 
+  .box {     /* wraps around each div a, b and c */
+      background-color: #444;
+      color: #fff;
+      border-radius: 5px;
+      padding: 40px;
+      font-size: 150%;
+  }
+
+ .title {     /* Connected to Burger Selection */
+     text-align: center;
+     padding-top: 50px;
+     margin: 0;
+     padding: 50px 0;
+     color: white;
+     text-transform: uppercase;
+     font-size: 35pt;
+ }
+ .subtitle {    /* Connected to subtitle select burger */
+     text-align: center;
+     text-transform: uppercase;
+     
+ }
+
+.header-class {       /* the header Welcome to Hannah's burgers */
+    background: url("https://wallpapersmug.com/download/2048x1152/48de0c/clouds-orange-sky.jpg");
+    opacity: 1;
+    background-position: center;
+    font-size: 30pt;
+    border: 20px solid #cc6600;
+    text-align: center;
+    padding-top: 50px;
+    margin: 0;
+    color: white; 
+}
+
+
+#contact {
+    border: 20px solid #cc6600;
+    padding: 40px;
+    background-color: #737373;
+    color: white; 
+}
+
+.customer-info-title {
+    font-size: 35pt;
+}
+
+.customer-info-sub-title {
+    text-transform: capitalize;
+}
+
+
+
+
+
+
+
+
