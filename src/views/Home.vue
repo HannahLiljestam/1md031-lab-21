@@ -8,7 +8,7 @@
   <main>
     <section id="burgerinfo">
       <h1 class="title">BURGER SELECTION</h1>
-      <h3 class="subtitle">Select one of our yummy burgers below to get started with your order</h3>
+      <h3 class="subtitle">Select one of our yummy burgers below to get started with your order.<br>All burgers available with beef, chicken or plantbeef.</h3>
 
       <div>
         <div class="wrapper">
@@ -17,7 +17,6 @@
                   v-bind:key="burger.name"
                   v-on:orderedBurger="addToOrder($event)"/>
         </div>
-
       </div>
 
 
@@ -40,7 +39,7 @@
           <input type="email" id="email" v-model="em" required="required" placeholder="E-mail address">
         </p>
 
-        <p>
+<!--        <p>
           <label for="Street name">Street Name</label><br>
           <input type="text" id="Street name" v-model="ln" placeholder="Street name">
         </p>
@@ -48,7 +47,7 @@
         <p>
           <label for="number">House Number</label><br>
           <input type="number" id="number" v-model="number" required="required" placeholder="House number">
-        </p>
+        </p> -->
 
         <p>
           <label for="payment">Choose a method of payment</label>
@@ -75,13 +74,16 @@
           <label for="Other">Other</label>
         </div>
 
+
         <div>
           <h3 class="subtitle">Mark your preferred delivery location on the map below.</h3>
         </div>
 
         <div class="mapWrapper">
-        <div id="map" v-on:click="addOrder">
-
+        <div id="map" v-on:click="setLocation">
+          <div v-bind:style="{ left: location.x + 'px', top: location.y + 'px'}" >
+            T
+          </div>
         </div>
         </div>
 
@@ -146,79 +148,116 @@ export default {
   },
   data: function () {
     return {
-                burgers: menu,
-                fn:"",
-                em:"",
-                ln: "",
-                number:"",
-                gender:"",
-                rcp:"",
-                amountOrdered:"",
-                orderedBurgers:{},
-                location: { x: 0,
-                            y: 0
-                                 }
+      burgers: menu,
+      fn: "",
+      em: "",
+      /*                ln: "",
+                number:"",*/
+      gender: "",
+      rcp: "",
+      amountOrdered: "",
+      orderedBurgers: {},
+      location: {
+        x: 0,
+        y: 0
+      },
+      personalInformation:""
 
-          //{name: "Hannah's tasty burger", kCal: 1000, img: "https://cached-images.bonnier.news/bnl01/standard-article/466a6b03-1dc8-4c53-9b38-062066eb7843/ed7990bd-913c-4eca-a07c-db9d76aef545/16x9/0/original.jpg"},
-           //     {name: "Hannah's yummy burger", kCal: 1200, img: "https://www.edibleorlando.com/wp-content/uploads/Screenshot-2019-05-23-17.21.08.png"},
-          //      {name: "Hannah's delicious burger", kCal: 1500, img: "https://www.burgerdudes.se/wp-content/uploads/2019/11/groundburger_timeout-620x380.jpg'"}]
 
-        // [ {name: "small burger", kCal: 250},
-        //         {name: "standard burger", kCal: 450},
-        //         {name: "large burger", kCal: 850}
-        //       ]
+      //{name: "Hannah's tasty burger", kCal: 1000, img: "https://cached-images.bonnier.news/bnl01/standard-article/466a6b03-1dc8-4c53-9b38-062066eb7843/ed7990bd-913c-4eca-a07c-db9d76aef545/16x9/0/original.jpg"},
+      //     {name: "Hannah's yummy burger", kCal: 1200, img: "https://www.edibleorlando.com/wp-content/uploads/Screenshot-2019-05-23-17.21.08.png"},
+      //      {name: "Hannah's delicious burger", kCal: 1500, img: "https://www.burgerdudes.se/wp-content/uploads/2019/11/groundburger_timeout-620x380.jpg'"}]
+
+      // [ {name: "small burger", kCal: 250},
+      //         {name: "standard burger", kCal: 450},
+      //         {name: "large burger", kCal: 850}
+      //       ]
     }
   },
   methods: {
+    submitInfo: function () {
+      this.personalInformation = {
+        name: this.fn,
+        email: this.em,
+        /*          this.ln,
+        this.number,*/
+        gender: this.gender,
+        payment: this.rcp
+      }
+      console.log(
+          this.personalInformation,
+          this.amountOrdered,
+          this.orderedBurgers,
+      )
+      socket.emit("addOrder", {
+        orderId: this.getOrderNumber(),
+        details: this.location,
+        orderItems: this.orderedBurgers,
+        personalInformation: this.personalInformation
+      })
+
+    },
+
+
     addToOrder: function (event) {
       this.orderedBurgers[event.name] = event.amount;
     },
 
     getOrderNumber: function () {
-      return Math.floor(Math.random()*100000);
+      return Math.floor(Math.random() * 100000);
     },
 
 
-    addOrder: function (event) {
+
+/*    addOrder: function (event) {
       this.orderedBurgers[event.name] = event.amount;
 
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().top};
-      socket.emit("addOrder", { orderId: this.getOrderNumber(),
-                                details: { x: event.clientX - 10 - offset.x,
-                                           y: event.clientY - 10 - offset.y },
-                                orderItems: ["Beans", "Curry"]
-                              }
-                 );
+      /!*var offset = {x: event.currentTarget.getBoundingClientRect().left,
+                    y: event.currentTarget.getBoundingClientRect().top}; *!/
+
+    },*/
+
+    setLocation: function (event) {
+      var offset = {
+        x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top
+      };
+
+      this.location = {
+        x: event.clientX - 10 - offset.x,
+        y: event.clientY - 10 - offset.y,
+      };
     },
-    submitInfo: function () {
-          console.log(
-          this.fn,
-          this.em,
-          this.ln,
-          this.number,
-          this.gender,
-          this.rcp,
-          this.amountOrdered,
-          this.orderedBurgers,
-          )
-    }
-  }
-}
+  },
+};
+
 </script>
 
 <style>
+
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
   #map {
     width: 1720px;
     height: 1078px;
+    margin: 0;
+    padding: 0;
     background: url("/img/polacks.jpg");
-
+    background-repeat: no-repeat;
+    position: relative;
+    cursor: crosshair;
   }
 
-
-  /* style.css */
-
-  @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+#map div {
+  position: absolute;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  width:30px;
+  height:20px;
+  font-size: 12pt;
+  text-align: center;
+}
 
   body {     /* Font, capitalize, line height, color of text, font size and margins to the sides of the whole body */
     font-family: "Times New Roman", serif;
@@ -227,7 +266,6 @@ export default {
     color: #2F4F4F;
     font-size: 16pt;
     margin: 50px; /*50px 120px 120px; */
-
   }
 
   .ingredients {
@@ -315,6 +353,8 @@ export default {
 
 .mapWrapper {
   overflow: scroll;
+  font-size: 30pt;
+  color: black;
 }
 
 

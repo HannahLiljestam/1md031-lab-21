@@ -4,24 +4,24 @@
     "name": "Hannahs extremely tasty burger",
     "img": "https://cached-images.bonnier.news/bnl01/standard-article/466a6b03-1dc8-4c53-9b38-062066eb7843/ed7990bd-913c-4eca-a07c-db9d76aef545/16x9/0/original.jpg",
     "kCal": "1000 kCal",
-    "gluten": "Contains gluten",
-    "lactose": "Contains lactose"
+    "gluten": true,
+    "lactose": true
   },
 
   {
     "name": "Hannahs yummy burger",
     "img": "https://www.edibleorlando.com/wp-content/uploads/Screenshot-2019-05-23-17.21.08.png",
     "kCal": "1500 kCal",
-    "gluten": "Contains gluten",
-    "lactose": "Contains lactose"
+    "gluten": true,
+    "lactose": true
   },
 
    {
      "name": "Hannahs delicious burger",
      "img": "https://www.burgerdudes.se/wp-content/uploads/2019/11/groundburger_timeout-620x380.jpg",
      "kCal": "1200 kCal",
-     "gluten": "Contains gluten",
-     "lactose": "Contains lactose"
+     "gluten": true,
+     "lactose": true
    }
 ]
 

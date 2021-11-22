@@ -6,8 +6,8 @@
     <img v-bind:src=burger.img>
     <ul>
       <li>{{burger.kCal}}</li>
-      <li>{{burger.lactose}}</li>
-      <li>{{burger.gluten}}</li>
+      <li v-if="burger.lactose"> Contains <span class="allergies"> lactose</span> </li>
+      <li v-if="burger.gluten"> Contains <span class="allergies"> gluten</span> </li>
     </ul>
 
   </div>
